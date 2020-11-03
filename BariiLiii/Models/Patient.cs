@@ -24,5 +24,5 @@ namespace BariiLiii.Models
         public string Location { get; set; }
 
         public ICollection<Appointment> appointment { get; set; }
-    }  
+    }
 }

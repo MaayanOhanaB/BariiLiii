@@ -1,10 +1,29 @@
 ﻿@model IEnumerable<BariiLiii.Models.MedicalTeam>
 
+@using Microsoft.AspNetCore.Identity
+@using BariiLiii.Areas.Identity.Data
+@inject SignInManager<BariiLiiiUser> SignInManager
+@inject UserManager<BariiLiiiUser> UserManager
+@{ }
+
 @{
     ViewData["Title"] = "Index";
 }
 
 <h1>Index</h1>
+
+<form asp-controller="MedicalTeams" asp-action="Index" method="get">
+    <label>  Doctor Id:<input type="text" name="DId" /></label>
+    <label>  Doctor Name:<input type="text" name="FullName" /></label>
+    <label>  Doctor Gender:<input type="text" name="Gender" /></label>
+    <label>  Doctor Specialization:<input type="text" name="Specialization" /></label>
+    <label>  Doctor Location:<input type="text" name="Location" /></label>
+    <label> Years of experience:<input type="text" name="PreviousExprience" /></label>
+
+    <button type="submit" class="btn btn-outline-success">
+        Filter
+    </button>
+</form>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -12,6 +31,9 @@
 <table class="table">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DId)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.FullName)
             </th>
@@ -31,29 +53,35 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FullName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gender)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Specialization)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Location)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PreviousExprience)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.DId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.DId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.DId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Specialization)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PreviousExprience)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.DId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.DId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.DId">Delete</a>
+                    <button onclick="showInPopup('@Url.Action("Register","MedicalTeams",(new { id = item.DId,userName=UserManager.GetUserName(User) }),Context.Request.Scheme)','Booking Confirmation')" class="btn btn-secondary text-white"><i class="fas fa-thumbs-up"></i>Reserve!</button>
+
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

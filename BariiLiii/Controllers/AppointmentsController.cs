@@ -7,24 +7,62 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BariiLiii.Data;
 using BariiLiii.Models;
+using BariiLiii.Areas.Identity.Data;
+using Microsoft.AspNetCore.Identity;
 
 namespace BariiLiii.Controllers
 {
     public class AppointmentsController : Controller
     {
         private readonly BariiLiiiContext _context;
+        private readonly Microsoft.AspNetCore.Identity.UserManager<BariiLiiiUser> _userManager;
+        private readonly SignInManager<BariiLiiiUser> _signInManager;
 
-        public AppointmentsController(BariiLiiiContext context)
+        public AppointmentsController(BariiLiiiContext context,
+            Microsoft.AspNetCore.Identity.UserManager<BariiLiiiUser> userManager,
+            SignInManager<BariiLiiiUser> signInManager)
         {
             _context = context;
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
 
-        // GET: Appointments
-        public async Task<IActionResult> Index()
+        //Serach patiens
+        public async Task<IActionResult> IndexAsync(int Id, string Specialization, string DId, string PatientId)
         {
-            var bariiLiiiContext = _context.Appointments.Include(a => a.PatientId);
-            return View(await bariiLiiiContext.ToListAsync());
+            var searchAppointments = from a in _context.Appointments
+                                     select a;
+
+            if (Id != 0)
+            {
+                searchAppointments = searchAppointments.Where(S => S.Id == Id);
+            }
+
+            if (!String.IsNullOrEmpty(Specialization))
+            {
+                searchAppointments = searchAppointments.Where(S => S.Specialization.Contains(Specialization));
+            }
+
+
+            if (!String.IsNullOrEmpty(DId))
+            {
+                searchAppointments = searchAppointments.Where(S => S.DId.Contains(DId));
+            }
+
+            if (!String.IsNullOrEmpty(PatientId))
+            {
+                searchAppointments = searchAppointments.Where(S => S.PatientId.Contains(PatientId));
+            }
+
+            return View(await searchAppointments.ToListAsync());
         }
+
+        //// GET: Appointments
+        //public async Task<IActionResult> Index()
+        //{
+        //    var bariiLiiiContext = _context.Appointments.Include(a => a.PatientId);
+        //    return View(await bariiLiiiContext.ToListAsync());
+        //}
 
         // GET: Appointments/Details/5
         public async Task<IActionResult> Details(int? id)
