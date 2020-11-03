@@ -33,8 +33,10 @@ namespace BariiLiii
                     options.UseSqlServer(
                         Configuration.GetConnectionString("BariiLiiiContextConnection")));
 
-            services.AddDefaultIdentity<BariiLiiiUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<BariiLiiiUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<BariiLiiiContext>();
+
+            services.AddControllersWithViews(); //new
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

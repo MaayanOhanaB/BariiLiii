@@ -188,6 +188,7 @@ namespace BariiLiii.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Specialization = table.Column<string>(nullable: true),
+                    DId = table.Column<string>(nullable: true),
                     PatientId = table.Column<string>(nullable: true),
                     AvailabilityQueues = table.Column<DateTime>(nullable: false),
                     medicalTeamDId = table.Column<string>(nullable: true)

@@ -15,6 +15,9 @@ namespace BariiLiii.Models
         [Display(Name = "Specialization")]
         public string Specialization { get; set; }
 
+        [Display(Name = "Doctor Id")]
+        public string DId { get; set; }
+
         [Display(Name = "Patient Id")]
         public string PatientId { get; set; }
 

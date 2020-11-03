@@ -6,12 +6,25 @@
 
 <h1>Index</h1>
 
+<form asp-controller="Patients" asp-action="Index" method="get">
+    <label>  Patient Id:<input type="text" name="PatientId" /></label>
+    <label>  Patient Gender:<input type="text" name="Gender" /></label>
+    <label>  Patient Location:<input type="text" name="Location" /></label>
+
+    <button type="submit" class="btn btn-outline-success">
+        Filter
+    </button>
+</form>
+
 <p>
     <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PatientId)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Gender)
             </th>
@@ -24,6 +37,9 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatientId)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Gender)
             </td>

@@ -29,7 +29,7 @@ namespace BariiLiii.Models
         [Display(Name = "Location")]
         public string Location { get; set; }
 
-        [Display(Name = "PreviousExprience")]
+        [Display(Name = "Previous Exprience")]
         public int PreviousExprience { get; set; }
 
         public ICollection<Appointment> appointment { get; set; }

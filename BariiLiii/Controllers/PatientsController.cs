@@ -7,23 +7,63 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BariiLiii.Data;
 using BariiLiii.Models;
+using BariiLiii.Areas.Identity.Data;
+using Microsoft.AspNetCore.Identity;
 
 namespace BariiLiii.Controllers
 {
     public class PatientsController : Controller
     {
         private readonly BariiLiiiContext _context;
+        private readonly Microsoft.AspNetCore.Identity.UserManager<BariiLiiiUser> _userManager;
+        private readonly SignInManager<BariiLiiiUser> _signInManager;
 
-        public PatientsController(BariiLiiiContext context)
+        public PatientsController(BariiLiiiContext context,
+            Microsoft.AspNetCore.Identity.UserManager<BariiLiiiUser> userManager,
+            SignInManager<BariiLiiiUser> signInManager)
         {
             _context = context;
+            _userManager = userManager;
+            _signInManager = signInManager;
+        }
+
+        //Serach patiens
+        public async Task<IActionResult> IndexAsync(string PatientId, string Gender, string Location)
+        {
+            var searchPatients = from p in _context.Patients
+                          select p;
+
+            if (!String.IsNullOrEmpty(PatientId))
+            {
+                searchPatients = searchPatients.Where(S => S.PatientId.Contains(PatientId));
+            }
+
+
+            if (!String.IsNullOrEmpty(Gender))
+            {
+                searchPatients = searchPatients.Where(S => S.Gender.Contains(Gender));
+            }
+
+            if (!String.IsNullOrEmpty(Location))
+            {
+                searchPatients = searchPatients.Where(S => S.Location.Contains(Location));
+            }
+
+            return View(await searchPatients.ToListAsync());
         }
 
         // GET: Patients
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.Patients.ToListAsync());
-        }
+        //public async Task<IActionResult> Index()
+        //{
+        //    var PatientScheduler = _context.Patients
+        //       .Join(_context.Appointments,
+        //       Ps => Ps.PatientId,
+        //       Av => Av.PatientId,
+        //       (Ps, Av) => new { Pat = Ps, Ava = Av })
+        //       .Where(DsAv => DsAv.Pat.PatientId.Equals(DsAv.Ava.PatientId));
+
+        //    return View(await _context.Patients.ToListAsync());
+        //}
 
         // GET: Patients/Details/5
         public async Task<IActionResult> Details(string? id)

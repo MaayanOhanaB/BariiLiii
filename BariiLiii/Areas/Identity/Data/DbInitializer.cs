@@ -44,24 +44,6 @@ namespace BariiLiii.Areas.Identity.Data
             }
             context.SaveChanges();
 
-            //Appointments
-            var appointments = new Appointment[]
-            {
-                new Appointment{Specialization="Dentist", PatientId="317228394", AvailabilityQueues=DateTime.Parse("12-01-21, 8:30")},
-                new Appointment{Specialization="Gastro", PatientId="316738320", AvailabilityQueues=DateTime.Parse("16-11-20, 19:00")},
-                new Appointment{Specialization="General Medicine", PatientId="316225520", AvailabilityQueues=DateTime.Parse("29-12-20, 12:46")},
-                new Appointment{Specialization="Orthopedics", PatientId="317916244", AvailabilityQueues=DateTime.Parse("17-01-21, 17:30")},
-                new Appointment{Specialization="Rhinoplasty", PatientId="022916982", AvailabilityQueues=DateTime.Parse("13-11-20,18:54")},
-                new Appointment{Specialization="Facelift", PatientId="313415632", AvailabilityQueues=DateTime.Parse("16-3-21, 14:00")},
-                new Appointment{Specialization="Hyaluronic Acid", PatientId="027116379", AvailabilityQueues=DateTime.Parse("15-02-21, 13:00")}
-            };
-
-            foreach (Appointment a in appointments)
-            {
-                context.Appointments.Add(a);
-            }
-            context.SaveChanges();
-
             //Patients
             var patients = new Patient[]
             {
@@ -77,6 +59,24 @@ namespace BariiLiii.Areas.Identity.Data
             foreach (Patient p in patients)
             {
                 context.Patients.Add(p);
+            }
+            context.SaveChanges();
+
+            //Appointments
+            var appointments = new Appointment[]
+            {
+                new Appointment{Specialization="Dentist", DId="022165847", PatientId="317228394", AvailabilityQueues=DateTime.Parse("12-01-21 8:30")},
+                new Appointment{Specialization="Gastro", DId="247665729", PatientId="316738320", AvailabilityQueues=DateTime.Parse("16-11-20 19:00")},
+                new Appointment{Specialization="General Medicine",DId="311145624", PatientId="316225520", AvailabilityQueues=DateTime.Parse("29-12-20 12:46")},
+                new Appointment{Specialization="Orthopedics", DId="022165714", PatientId="317916244", AvailabilityQueues=DateTime.Parse("17-01-21 17:30")},
+                new Appointment{Specialization="Rhinoplasty",DId="318465913", PatientId="022916982", AvailabilityQueues=DateTime.Parse("13-11-20 18:54")},
+                new Appointment{Specialization="Facelift", DId="316465920", PatientId="313415632", AvailabilityQueues=DateTime.Parse("16-3-21 14:00")},
+                new Appointment{Specialization="Hyaluronic Acid", DId="318465914",PatientId="027116379", AvailabilityQueues=DateTime.Parse("15-02-21 13:00")}
+            };
+
+            foreach (Appointment a in appointments)
+            {
+                context.Appointments.Add(a);
             }
             context.SaveChanges();
         }

@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BariiLiii.Areas.Identity.Pages.Account
 {
@@ -51,6 +52,7 @@ namespace BariiLiii.Areas.Identity.Pages.Account
             public string FullName { get; set; }
 
             [Required]
+            [DatabaseGenerated(DatabaseGeneratedOption.None)]
             [MinLengthAttribute(9)]
             [MaxLengthAttribute(9)]
             [Display(Name = "Id")]
