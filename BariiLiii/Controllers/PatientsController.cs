@@ -28,7 +28,7 @@ namespace BariiLiii.Controllers
         }
 
         //Serach patiens
-        public async Task<IActionResult> IndexAsync(string PatientId, string Gender, string Location)
+        public async Task<IActionResult> IndexAsync(string PatientId, string fullName, string Gender, string Location)
         {
             var searchPatients = from p in _context.Patients
                                  select p;
@@ -38,6 +38,10 @@ namespace BariiLiii.Controllers
                 searchPatients = searchPatients.Where(S => S.PatientId.Contains(PatientId));
             }
 
+            if (!String.IsNullOrEmpty(fullName))
+            {
+                searchPatients = searchPatients.Where(S => S.FullName.Contains(fullName));
+            }
 
             if (!String.IsNullOrEmpty(Gender))
             {
@@ -51,19 +55,6 @@ namespace BariiLiii.Controllers
 
             return View(await searchPatients.ToListAsync());
         }
-
-        // GET: Patients
-        //public async Task<IActionResult> Index()
-        //{
-        //    var PatientScheduler = _context.Patients
-        //       .Join(_context.Appointments,
-        //       Ps => Ps.PatientId,
-        //       Av => Av.PatientId,
-        //       (Ps, Av) => new { Pat = Ps, Ava = Av })
-        //       .Where(DsAv => DsAv.Pat.PatientId.Equals(DsAv.Ava.PatientId));
-
-        //    return View(await _context.Patients.ToListAsync());
-        //}
 
         // GET: Patients/Details/5
         public async Task<IActionResult> Details(string? id)
@@ -94,7 +85,7 @@ namespace BariiLiii.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PatientId,Gender,Location")] Patient patient)
+        public async Task<IActionResult> Create([Bind("PatientId,FullName,Gender,Location")] Patient patient)
         {
             if (ModelState.IsValid)
             {
@@ -106,7 +97,7 @@ namespace BariiLiii.Controllers
         }
 
         // GET: Patients/Edit/5
-        public async Task<IActionResult> Edit(long? id)
+        public async Task<IActionResult> Edit(string? id)
         {
             if (id == null)
             {
@@ -126,7 +117,7 @@ namespace BariiLiii.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("PatientId,Gender,Location")] Patient patient)
+        public async Task<IActionResult> Edit(string id, [Bind("PatientId,FullName,Gender,Location")] Patient patient)
         {
             if (id != patient.PatientId)
             {

@@ -17,6 +17,9 @@ namespace BariiLiii.Models
         [Display(Name = "Patient Id")]
         public string PatientId { get; set; }
 
+        [Display(Name = "Full Name")]
+        public string FullName { get; set; }
+
         [Display(Name = "Gender")]
         public string Gender { get; set; }
 

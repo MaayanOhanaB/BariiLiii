@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BariiLiii.Areas.Identity.Pages.Account
 {
@@ -29,7 +30,7 @@ namespace BariiLiii.Areas.Identity.Pages.Account
             UserManager<BariiLiiiUser> userManager,
             SignInManager<BariiLiiiUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender, string fullName, string usId)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -51,10 +52,11 @@ namespace BariiLiii.Areas.Identity.Pages.Account
             public string FullName { get; set; }
 
             [Required]
+            [DatabaseGenerated(DatabaseGeneratedOption.None)]
             [MinLengthAttribute(9)]
             [MaxLengthAttribute(9)]
             [Display(Name = "Id")]
-            public string Id { get; set; }
+            public string uId { get; set; }
 
             [Required]
             [EmailAddress]

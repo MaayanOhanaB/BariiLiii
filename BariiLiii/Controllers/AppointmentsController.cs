@@ -27,7 +27,7 @@ namespace BariiLiii.Controllers
             _signInManager = signInManager;
         }
 
-        //Serach patiens
+        //Serach appointments
         public async Task<IActionResult> IndexAsync(int Id, string Specialization, string DId, string PatientId)
         {
             var searchAppointments = from a in _context.Appointments

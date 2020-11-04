@@ -237,3 +237,5 @@ C:\Users\Owner\Desktop\test2\BariiLiii\BariiLiii\obj\Debug\netcoreapp3.1\Razor\V
 C:\Users\Owner\Desktop\test2\BariiLiii\BariiLiii\obj\Debug\netcoreapp3.1\Razor\Views\Patients\Edit.cshtml.g.cs
 C:\Users\Owner\Desktop\test2\BariiLiii\BariiLiii\obj\Debug\netcoreapp3.1\Razor\Views\Patients\Index.cshtml.g.cs
 C:\Users\Owner\Desktop\test2\BariiLiii\BariiLiii\obj\Debug\netcoreapp3.1\BariiLiii.csprojAssemblyReference.cache
+C:\Users\Owner\Desktop\test2\BariiLiii\BariiLiii\obj\Debug\netcoreapp3.1\Razor\Views\DoctorsAndAppointments\Index.cshtml.g.cs
+C:\Users\Owner\Desktop\test2\BariiLiii\BariiLiii\obj\Debug\netcoreapp3.1\Razor\Views\PatientsAndAppointments\Index.cshtml.g.cs

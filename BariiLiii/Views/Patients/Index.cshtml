@@ -8,6 +8,7 @@
 
 <form asp-controller="Patients" asp-action="Index" method="get">
     <label>  Patient Id:<input type="text" name="PatientId" /></label>
+    <label>  Patient Name:<input type="text" name="FullName" /></label>
     <label>  Patient Gender:<input type="text" name="Gender" /></label>
     <label>  Patient Location:<input type="text" name="Location" /></label>
 
@@ -26,6 +27,9 @@
                 @Html.DisplayNameFor(model => model.PatientId)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Gender)
             </th>
             <th>
@@ -40,6 +44,9 @@
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.PatientId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullName)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Gender)

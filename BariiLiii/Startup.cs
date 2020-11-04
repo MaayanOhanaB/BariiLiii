@@ -33,7 +33,7 @@ namespace BariiLiii
                     options.UseSqlServer(
                         Configuration.GetConnectionString("BariiLiiiContextConnection")));
 
-            services.AddDefaultIdentity<BariiLiiiUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<BariiLiiiUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<BariiLiiiContext>();
         }
 

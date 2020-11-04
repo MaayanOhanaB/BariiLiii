@@ -47,13 +47,13 @@ namespace BariiLiii.Areas.Identity.Data
             //Patients
             var patients = new Patient[]
             {
-                new Patient{PatientId = "317228394", Gender="F",Location="Rishon Le-Zion"},
-                new Patient{PatientId = "316738320", Gender="M",Location="Shoham"},
-                new Patient{PatientId = "316225520", Gender="M",Location="Tel Aviv"},
-                new Patient{PatientId = "317916244", Gender="F",Location="Petah Tikva"},
-                new Patient{PatientId = "022916982", Gender="F",Location="Jerusalem"},
-                new Patient{PatientId = "313415632", Gender="M",Location="Hod Ha-Sharon"},
-                new Patient{PatientId = "027116379", Gender="F",Location="Holon"}
+                new Patient{PatientId = "317228394", FullName="Rona Levy", Gender="F",Location="Rishon Le-Zion"},
+                new Patient{PatientId = "316738320",FullName="Dan Hermon", Gender="M",Location="Shoham"},
+                new Patient{PatientId = "316225520", FullName="Shay Cohen", Gender="M",Location="Tel Aviv"},
+                new Patient{PatientId = "317916244", FullName="Lin Shitrit", Gender="F",Location="Petah Tikva"},
+                new Patient{PatientId = "022916982",FullName="Yael Guli", Gender="F",Location="Jerusalem"},
+                new Patient{PatientId = "313415632",FullName="Liron Shabo", Gender="M",Location="Hod Ha-Sharon"},
+                new Patient{PatientId = "027116379", FullName="Maayan Hadar", Gender="F",Location="Holon"}
             };
 
             foreach (Patient p in patients)
