@@ -13,5 +13,6 @@ namespace BariiLiii.Areas.Identity.Data
     // Add profile data for application users by adding properties to the BariiLiiiUser class
     public class BariiLiiiUser : IdentityUser
     {
+        public string fullName { get; set; }
     }
 }

@@ -1,0 +1,26 @@
+﻿@model IEnumerable<BariiLiii.Models.Appointment>
+
+@{
+    ViewData["Title"] = "AppointmentGroupby";
+}
+
+<h1>Appointment Groupby</h1>
+
+<table>
+    <tr>
+        <th>
+            Specialization
+        </th>
+        <th>
+            Appointments Date
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Specialization</td>
+            <td>@item.AvailabilityQueues</td>
+        </tr>
+    }
+</table>

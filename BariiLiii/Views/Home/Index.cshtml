@@ -3,6 +3,101 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">BariLi</h1>
+</div>
+
+@*Choosing the department that the user needs*@
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <p><img src="~/Images/550_shutterstock_269923772.jpg" style=" height:250px;width:250px;" /></p>
+                <h5 class="card-title">General Medicine</h5>
+                <p class="card-text">For more information</p>
+                <a href="#FirstId" class="btn btn-primary">Click Here</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <p><img src="~/Images/plastic.jpg" style=" height:250px;width:250px;" /></p>
+                <h5 class="card-title">Plastic Medicine</h5>
+                <p class="card-text">For more information</p>
+                <a href="#SecondId" class="btn btn-primary">Click Here</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text-center">
+    <h2 class="display-4">About Us</h2>
+    <p>Established in 1983, for over 37 years, we have offered our patients the most advanced and effective cosmetic treatments, helping them achieve their desired results.</p>
+    <p>Furthermore, we expertise in general medicine which include the most professional doctors.</p>
+    <p>You can enjoy from our treatments and have the best experience.</p>
+</div>
+
+@*Go down to General medicine*@
+<div class="m-5 p-5 jumbotron" id="FirstId">
+    <div class="container">
+        <h2 class="display-4">General Medicine</h2>
+        <div class="card-deck">
+            <div class="card">
+                <div class="card-body">
+                    <p><img src="" style=" height:250px;width:250px;" /></p>
+                    <h5 class="card-title">About our general medical team</h5>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn btn-primary">Click Here</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <p><img src="" style=" height:250px;width:250px;" /></p>
+                    <h5 class="card-title">Covid-19</h5>
+                </div>
+                <div class="card-footer">
+                    @* Sending to the relevant page *@
+                    <form asp-controller="Home" asp-action="Corona" method="get">
+                        <button type="submit" class="btn btn-outline-primary" name="info" value="Corona">
+                            Click Here
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Go down to Plastic medicine*@
+<div class="m-5 p-5 jumbotron" id="SecondId">
+    <div class="container">
+        <h2 class="display-4">Plastic Medicine</h2>
+        <div class="card-deck">
+            <div class="card">
+                <div class="card-body">
+                    <p><img src="" style=" height:250px;width:250px;" /></p>
+                    <h5 class="card-title">About our plastic medical team</h5>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn btn-primary">Click Here</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <p><img src="" style=" height:250px;width:250px;" /></p>
+                    <h5 class="card-title">Plastic surgery</h5>
+                </div>
+                <div class="card-footer">
+                    @* Sending to the relevant page *@
+                    <form asp-controller="Home" asp-action="PlasticSurgery" method="get">
+                        <button type="submit" class="btn btn-outline-primary" name="info" value="PlasticSurgery">
+                            Click Here
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

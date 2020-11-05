@@ -30,7 +30,7 @@ namespace BariiLiii.Areas.Identity.Pages.Account
             UserManager<BariiLiiiUser> userManager,
             SignInManager<BariiLiiiUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender, string fullName, string usId)
+            IEmailSender emailSender)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -87,7 +87,7 @@ namespace BariiLiii.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new BariiLiiiUser { UserName = Input.Email, Email = Input.Email };
+                var user = new BariiLiiiUser { fullName = Input.FullName, UserName = Input.Email, Email = Input.Email };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

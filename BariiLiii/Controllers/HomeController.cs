@@ -18,12 +18,23 @@ namespace BariiLiii.Controllers
             _logger = logger;
         }
 
+        //Home page
         public IActionResult Index()
         {
             return View();
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        public IActionResult Corona()
+        {
+            return View();
+        }
+
+        public IActionResult PlasticSurgery()
         {
             return View();
         }

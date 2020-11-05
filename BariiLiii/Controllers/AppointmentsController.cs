@@ -57,12 +57,16 @@ namespace BariiLiii.Controllers
             return View(await searchAppointments.ToListAsync());
         }
 
-        //// GET: Appointments
-        //public async Task<IActionResult> Index()
-        //{
-        //    var bariiLiiiContext = _context.Appointments.Include(a => a.PatientId);
-        //    return View(await bariiLiiiContext.ToListAsync());
-        //}
+        public async Task<IActionResult> AppointmentGroupby()
+        {
+            List<Appointment> AppointmentsLi =_context.Appointments.ToList();
+
+            var groupTable = from sa in AppointmentsLi
+                             group new { sa.Specialization, sa.AvailabilityQueues }
+                             by sa.Specialization into appoinmentGroup
+                             select appoinmentGroup;
+            return View(groupTable);
+        }
 
         // GET: Appointments/Details/5
         public async Task<IActionResult> Details(int? id)
