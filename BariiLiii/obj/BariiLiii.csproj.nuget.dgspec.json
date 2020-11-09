@@ -1,24 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Owner\\Desktop\\sofiiiiii\\BariiLiii\\BariiLiii.csproj": {}
+    "C:\\Users\\chenb\\Desktop\\Sofiii\\BariiLiii\\BariiLiii.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Owner\\Desktop\\sofiiiiii\\BariiLiii\\BariiLiii.csproj": {
+    "C:\\Users\\chenb\\Desktop\\Sofiii\\BariiLiii\\BariiLiii.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Owner\\Desktop\\sofiiiiii\\BariiLiii\\BariiLiii.csproj",
+        "projectUniqueName": "C:\\Users\\chenb\\Desktop\\Sofiii\\BariiLiii\\BariiLiii.csproj",
         "projectName": "BariiLiii",
-        "projectPath": "C:\\Users\\Owner\\Desktop\\sofiiiiii\\BariiLiii\\BariiLiii.csproj",
-        "packagesPath": "C:\\Users\\Owner\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Owner\\Desktop\\sofiiiiii\\BariiLiii\\obj\\",
+        "projectPath": "C:\\Users\\chenb\\Desktop\\Sofiii\\BariiLiii\\BariiLiii.csproj",
+        "packagesPath": "C:\\Users\\chenb\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\chenb\\Desktop\\Sofiii\\BariiLiii\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Owner\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\chenb\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"

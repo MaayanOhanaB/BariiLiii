@@ -69,3 +69,104 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+/*Select all the headlines*/
+h1, h2, h5 {
+    text-align: center;
+    color: black;
+}
+
+/*Selects all <p> elements*/
+p {
+    text-align: center;
+    color: black;
+    font-size:20px;
+}
+
+/*Center the first click here*/
+div {
+    text-align: center;
+    color: black;
+}
+
+/*Selects the element with id="FirstId" and id="SecondId*/
+#FirstId, #SecondId {
+    text-align: center;
+    color: black;
+}
+
+/*Font size*/
+/*Cutting the corners of the pictures*/
+h1 {
+    font-size: 70px;
+    border-radius: 22px;
+}
+
+h2 {
+    font-size: 30px;
+    border-radius: 22px;
+}
+
+h5 {
+    font-size: 25px;
+}
+
+/*pic of the bottom*/
+body {
+    background-color: aliceblue;
+    background-image: url("../Images/BackkGround.jpg");
+    background-repeat: repeat-x;
+    background-position: bottom;
+    background-size: 35%;
+    font-style: italic;
+}
+
+
+h1, h2 {
+    background-color: lightgray;
+}
+
+/*Change the color of the headline when hovering*/
+/*Create a shadow on the picture*/
+h1:hover {
+        color: white;
+        box-shadow: 5px 3px 7px #332d2d;
+}
+
+h2:hover {
+    color:red;
+    box-shadow:5px 3px 7px #332d2d;
+}
+
+/*Change the color of the "click here" when hovering*/
+a.btn-primary:hover {
+    color:grey;
+}
+
+/*Cutting the corners of the pictures*/
+/*Create a shadow on the picture*/
+img {
+    border-radius:22px;
+    box-shadow:5px 8px 10px rgba(39, 35, 35, 0.93);
+}
+
+a {
+    font-size:18px;
+    font-style:italic;
+}
+
+label {
+    font-size: 18px;
+    font-style: italic;
+}
+
+/*#Logo {
+    position:center;
+    top:20%;
+    left:60%;
+    
+}*/
+
+
+
+
