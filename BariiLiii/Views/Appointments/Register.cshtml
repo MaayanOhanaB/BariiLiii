@@ -1,0 +1,13 @@
+﻿@model BariiLiii.Models.Appointment
+
+@using Microsoft.AspNetCore.Identity
+@using BariiLiii.Areas.Identity.Data
+@inject SignInManager<BariiLiiiUser> SignInManager
+@inject UserManager<BariiLiiiUser> UserManager
+@{
+}
+
+    <p> Hello @UserManager.GetUserAsync(User).Result.FullName, Thank You for registering!</p>
+    <p>This is your registeration details:</p>
+   <p> Apponitment Type : @Html.DisplayFor(model=>model.Specialization)</p>
+ <p>Appointment Time: @Html.DisplayFor(model => model.AvailabilityQueues)</p>

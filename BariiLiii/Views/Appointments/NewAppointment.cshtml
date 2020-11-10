@@ -1,0 +1,111 @@
+﻿@model IEnumerable<BariiLiii.Models.MedicalTeam>
+
+@using Microsoft.AspNetCore.Identity
+@using BariiLiii.Areas.Identity.Data
+@inject SignInManager<BariiLiiiUser> SignInManager
+@inject UserManager<BariiLiiiUser> UserManager
+@{
+}
+<body>
+    <h3> Make A new appointment</h3>
+    <form asp-controller="Appointments" asp-action="NewAppointment" method="get">
+        <label>  Specialization:<input type="text" name="specializtion" /></label>
+        <button type="submit" class="btn btn-outline-info">
+            Filter
+        </button>
+    </form>
+    <form asp-controller="Appointments" asp-action="NewAppointment" method="get">
+        <input type="hidden" name="specializtion" value="ShowAll" />
+        <button type="submit" class="btn btn-outline-info">
+            Show All
+        </button>
+    </form>
+    <form asp-controller="Appointments" asp-action="NewAppointment" method="get">
+        <label for="browser">Or choose from our Main Departments:</label>
+        <input list="browsers" name="specializtion">
+        <datalist id="browsers">
+            <option value="Dentist">Dentist</option>
+            <option value="specitaliztion" >Name OF specializtion</option>
+            <option value="Chrome"></option>
+            <option value="Opera"></option>
+            <option value="Safari"></option>
+        </datalist>
+        <input type="submit">
+    </form>
+
+
+    @if (Model.Count() == 0)
+    {
+        <p>Please Choose a Specializtion</p>
+    }
+    else
+    {
+
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FullName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Gender)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Specialization)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Location)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PreviousExprience)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FullName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Gender)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Specialization)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Location)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PreviousExprience)
+                        </td>
+                      
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.DId">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.DId">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.DId">Delete</a>
+                            <form asp-controller="Appointments" asp-action="Register">
+                                <input type="hidden" name="Doctorid" value="@item.DId" />
+                                <input type="hidden" name="userid" value="@UserManager.GetUserId(User)" />
+                                <input type="datetime-local" name="datetime">
+                                <button type="submit"><i class="fas fa-pencil-alt"></i>Register</button>
+
+                            </form>
+                            @*<button onclick="showInPopup('@Url.Action("Register", "MedicalTeams", (new { id = item.DId, userName = UserManager.GetUserName(User) }), Context.Request.Scheme)','Booking Confirmation')" class="btn btn-secondary text-white"><i class="fas fa-thumbs-up"></i>Reserve!</button>*@
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</body>
