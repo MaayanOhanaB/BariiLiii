@@ -1,0 +1,94 @@
+﻿@model IEnumerable<BariiLiii.Models.Appointment>
+@using Microsoft.AspNetCore.Identity
+@using BariiLiii.Areas.Identity.Data
+
+@inject SignInManager<BariiLiiiUser> SignInManager
+@inject UserManager<BariiLiiiUser> UserManager
+
+@{
+    ViewData["Title"] = "Index";
+}
+@*if the user is connected*@
+@if (SignInManager.IsSignedIn(User))
+{
+    //if the user is not admin
+    @if (UserManager.GetUserAsync(User).Result.Role != "Admin")
+    {
+        <h1 style="color:red">This page is for admins only!!</h1>
+    }
+    //if the user is admin
+    else if (UserManager.GetUserAsync(User).Result.Role == "Admin")
+    {
+        <h1>Appointments List</h1>
+        <form asp-controller="Appointments" asp-action="Index" method="get">
+            <label>  Appointment Id:<input type="text" name="Id" /></label>
+            <label>  Doctor Id:<input type="text" name="DId" /></label>
+            <label>  Specialization:<input type="text" name="Specialization" /></label>
+            <label>  Patient Id:<input type="text" name="PatinetId" /></label>
+
+            <button type="submit" class="btn btn-outline-success">
+                Filter
+            </button>
+        </form>
+
+        <p>
+            <a asp-action="Create">Create New</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Specialization)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AvailabilityQueues)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.userId)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Specialization)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AvailabilityQueues)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.userId)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+}
+@*if the user is not connected*@
+else
+{
+    <h1 style="color:red">This page is for admins only!!</h1>
+
+}

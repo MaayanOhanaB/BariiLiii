@@ -1,0 +1,37 @@
+﻿@model IEnumerable<BariiLiii.Models.MedicalTeam>
+
+@using Microsoft.AspNetCore.Identity
+@using BariiLiii.Areas.Identity.Data
+@inject SignInManager<BariiLiiiUser> SignInManager
+@inject UserManager<BariiLiiiUser> UserManager
+@{
+}
+<h1> Welcome to our plastic doctors</h1>
+@foreach (var item in Model)
+{
+<div class="col-sm-6">
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">
+                @Html.DisplayFor(modelItem => item.FullName)
+            </h5>
+            <p class="card-text">
+                Specializtion: @Html.DisplayFor(modelItem => item.Specialization)<br />
+                Years Of experience : @Html.DisplayFor(modelItem => item.PreviousExprience)<br />
+                Location :  @Html.DisplayFor(modelItem => item.Location)<br />
+            </p>
+            @if (SignInManager.IsSignedIn(User))
+            {
+            <form asp-controller="Appointments" asp-action="Register">
+                <input type="hidden" name="Doctorid" value="@item.DId" />
+                <input type="hidden" name="userid" value="@UserManager.GetUserId(User)" />
+                <input type="datetime-local" name="datetime">
+                <button type="submit" class="btn btn-primary"><i class="fas fa-pencil-alt"></i>Register</button>
+
+            </form>
+            }
+        </div>
+    </div>
+</div>
+}

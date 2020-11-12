@@ -1,0 +1,30 @@
+﻿@model IEnumerable<BariiLiii.Models.DoctorsAndAppointments>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Doctors Scheduler</h1>
+
+<table>
+    <tr>
+        <th>
+            Doctor Name
+        </th>
+        <th>
+            Specialization
+        </th>
+        <th>
+            Appointments Date
+        </th>
+    </tr>
+
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@item.theDoctor.FullName</td>
+            <td>@item.theDoctor.Specialization</td>
+            <td>@item.theAppointment.AvailabilityQueues</td>
+        </tr>
+    }
+</table>

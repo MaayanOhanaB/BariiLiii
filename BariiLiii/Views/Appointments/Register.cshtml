@@ -1,0 +1,22 @@
+﻿@model BariiLiii.Models.Appointment
+
+@using Microsoft.AspNetCore.Identity
+@using BariiLiii.Areas.Identity.Data
+@inject SignInManager<BariiLiiiUser> SignInManager
+@inject UserManager<BariiLiiiUser> UserManager
+@{
+}
+@if (Model == null)
+{
+    <p>Appointment cant be made.Please Choose a different hour/date.</p>
+    <a class=" btn btn-primary" asp-area="" asp-controller="Appointments" asp-action="NewAppointment">Back to list</a>
+
+}
+else
+{
+
+    <p> Hello @UserManager.GetUserAsync(User).Result.FullName, Thank You for registering!</p>
+    <p>This is your registeration details:</p>
+    <p> Apponitment Type : @Html.DisplayFor(model => model.Specialization)</p>
+    <p>Appointment Time: @Html.DisplayFor(model => model.AvailabilityQueues)</p>
+}
